@@ -1,0 +1,55 @@
+version: '3.5'
+services:
+  mysql:
+    image: mysql:5.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=aidr_predict
+      - MYSQL_USER=aidr_admin
+      - MYSQL_PASSWORD=aidr_admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - $PWD/support_files/mysqlinit:/docker-entrypoint-initdb.d
+      - $PWD/support_files/mysqlconf:/etc/mysql/conf.d
+      - aidr_mysqldata:/var/lib/mysql
+  postgres:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_DB=aidr
+      - POSTGRES_USER=aidr_admin
+      - POSTGRES_PASSWORD=aidr_admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - aidr_pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - $PWD/support_files/redis.conf:/usr/local/etc/redis/redis.conf
+  glassfish:
+#    build: $PWD/support_files/glassfish
+    image: aidr/dev:5d02096
+    environment:
+      - MY_SQL_USERNAME=aidr_admin
+      - MY_SQL_PASSWORD=aidr_admin
+      - MY_SQL_HOST=mysql
+      - ADMIN_PASSWORD=adminadmin
+    ports:
+      - "4848:4848"
+      - "8080:8080"
+      - "8181:8181"
+    depends_on:
+      - "mysql"
+      - "postgres"
+      - "redis"
+    volumes:
+      - aidr_glassfish:/glassfish4/glassfish/domains
+
+volumes:
+  aidr_mysqldata:
+  aidr_pgdata:
+  aidr_glassfish:

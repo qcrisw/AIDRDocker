@@ -1,0 +1,14 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Feb 21 17:42:15 AST 2018
+@default-opensourceagility-snapshots-http\://repo.opensourceagility.com/releases/.lastUpdated=1519224135374
+http\://repo.opensourceagility.com/releases/.error=Could not transfer artifact org.socialsignin\:spring-social-security\:jar\:sources\:1.0.3.RELEASE from/to opensourceagility-snapshots (http\://repo.opensourceagility.com/releases)\: repo.opensourceagility.com
+http\://amateras.sourceforge.jp/mvn/.lastUpdated=1519198212669
+http\://maven.springframework.org/milestone/.lastUpdated=1519198212977
+http\://repo.springsource.org/release/.lastUpdated=1519198213222
+https\://maven.repository.redhat.com/ga/.lastUpdated=1511187229982
+https\://repo.maven.apache.org/maven2/.lastUpdated=1519198213734
+https\://maven.repository.redhat.com/ga/.error=
+http\://maven.springframework.org/milestone/.error=
+http\://repo.springsource.org/release/.error=
+https\://repo.maven.apache.org/maven2/.error=
+http\://amateras.sourceforge.jp/mvn/.error=
